@@ -31,28 +31,41 @@ var cardThree = cards[3];
 var cardFour = cards[2];
 
 
+
 function checkForMatch(){
 
-if (cardsInPlay.length >= 1){
-  if(cardsInPlay[0] === cardsInPlay[1]){
-      alert("You found a match!");
-    }else if(cardsInPlay.length > 1){
-      alert("Please RESET and try again.");
+if (cardsInPlay.length > 1){
+  if(cardsInPlay[0] === cardsInPlay[1] || cardsInPlay.length < 2){
+      alert("Lucky You!");
+      
+    }else if(cardsInPlay.length > 2){
+      alert("will now RESET and try again.");
+      var length = cardsInPlay.length;
+      cardsReset(length);
     }else{
-      alert("Sorry Try Again");
+      alert("WRONG!!");
     }
   }
 };
+//---------------------------------------------------
 
+function cardsReset(length){
+  if (length > 2){
+    location.reload();
+  }else{}
+}
+//if cardsInPlay.length is > 2 the cards should reset
+//----------------------------------------------------
 
 function flipCard(){
 
 var cardId = this.getAttribute('data-id');
 this.setAttribute('src', cards[cardId].cardImage);
-  checkForMatch();
+
 
   console.log("You flipped a" + " " + cards[cardId].rank + " " + "of" + " " + cards[cardId].suit);
   cardsInPlay.push(cards[cardId].rank);
+  checkForMatch();
   console.log(cards[cardId].cardImage);
 };
 
