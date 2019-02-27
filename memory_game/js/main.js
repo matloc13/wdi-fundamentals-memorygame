@@ -35,11 +35,12 @@ var cardFour = cards[2];
 function checkForMatch(){
 
 if (cardsInPlay.length > 1){
-  if(cardsInPlay[0] === cardsInPlay[1] || cardsInPlay.length < 2){
+  if(cardsInPlay[0] === cardsInPlay[1]){
+    var length = cardsInPlay.length;
       alert("Lucky You!");
-      
+      cardsReset(length);
     }else if(cardsInPlay.length > 2){
-      alert("will now RESET and try again.");
+      alert("will now RESET please try again.");
       var length = cardsInPlay.length;
       cardsReset(length);
     }else{
@@ -52,7 +53,7 @@ if (cardsInPlay.length > 1){
 function cardsReset(length){
   if (length > 2){
     location.reload();
-  }else{}
+  }
 }
 //if cardsInPlay.length is > 2 the cards should reset
 //----------------------------------------------------
